@@ -1,0 +1,303 @@
+{
+  "templateName": "ACSC Essential Eight Baseline",
+  "description": "Standards template for managing drift against ACSC Essential Eight cybersecurity framework. Maps to P1 (Patch Applications), P2 (Patch OS), P3 (MFA), P6 (Macro Restrictions), and P7 (Application Hardening) requirements.",
+  "standards": [
+    {
+      "name": "standards.AuditLog",
+      "action": "Remediate",
+      "notes": "P3 MFA - Required for event logging and analysis (R13-R18 ML2, R18-R22 ML3)"
+    },
+    {
+      "name": "standards.EnableMailboxAuditing",
+      "action": "Remediate",
+      "notes": "P3 MFA - Mailbox auditing for compliance and investigation"
+    },
+    {
+      "name": "standards.EnableFIDO2",
+      "action": "Remediate",
+      "notes": "P3 MFA - Phishing-resistant MFA for ML2+ (P3R10-R12, P3R20-R23)"
+    },
+    {
+      "name": "standards.EnableHardwareOAuth",
+      "action": "Remediate",
+      "notes": "P3 MFA - Hardware tokens for phishing-resistant MFA"
+    },
+    {
+      "name": "standards.DisableSMS",
+      "action": "Remediate",
+      "notes": "P3 MFA - Remove SMS as MFA method (not phishing-resistant per ACSC)"
+    },
+    {
+      "name": "standards.DisableVoice",
+      "action": "Remediate",
+      "notes": "P3 MFA - Remove Voice call as MFA method (not phishing-resistant per ACSC)"
+    },
+    {
+      "name": "standards.NudgeMFA",
+      "action": "Remediate",
+      "value": {
+        "snoozeDurationInDays": 3,
+        "enforcementType": "enabled"
+      },
+      "notes": "P3 MFA - Encourage MFA registration for all users"
+    },
+    {
+      "name": "standards.PerUserMFA",
+      "action": "Report",
+      "notes": "P3 MFA - Track per-user MFA status as fallback when CA not available"
+    },
+    {
+      "name": "standards.OauthConsent",
+      "action": "Remediate",
+      "notes": "P7 Hardening - Prevents unauthorized app consent (reduces attack surface)"
+    },
+    {
+      "name": "standards.DisableGuests",
+      "action": "Report",
+      "value": {
+        "days": 90
+      },
+      "notes": "P3 MFA - Review guest access regularly for ML2+ compliance"
+    },
+    {
+      "name": "standards.StaleEntraDevices",
+      "action": "Remediate",
+      "value": {
+        "days": 45
+      },
+      "notes": "P1/P2 Patching - Remove stale devices from update compliance scope"
+    },
+    {
+      "name": "standards.DisableBasicAuthSMTP",
+      "action": "Remediate",
+      "notes": "P7 Hardening - Disables legacy authentication (reduces attack surface)"
+    },
+    {
+      "name": "standards.PhishProtection",
+      "action": "Remediate",
+      "notes": "P7 Hardening - Branding protection helps identify phishing attempts"
+    },
+    {
+      "name": "standards.ActivityBasedTimeout",
+      "action": "Remediate",
+      "value": {
+        "timeout": "01:00:00"
+      },
+      "notes": "P7 Hardening - Session timeout reduces window of opportunity for attackers"
+    },
+    {
+      "name": "standards.PasswordExpireDisabled",
+      "action": "Remediate",
+      "notes": "P7 Hardening - Modern password guidance (NIST/Microsoft) - no forced expiration"
+    },
+    {
+      "name": "standards.CustomBannedPasswordList",
+      "action": "Report",
+      "notes": "P7 Hardening - Check banned password list is configured"
+    },
+    {
+      "name": "standards.DisableSecurityGroupUsers",
+      "action": "Remediate",
+      "notes": "P7 Hardening - Prevents users creating security groups (attack surface reduction)"
+    },
+    {
+      "name": "standards.DisableTenantCreation",
+      "action": "Remediate",
+      "notes": "P7 Hardening - Restricts shadow IT tenant creation"
+    },
+    {
+      "name": "standards.DisableSelfServiceLicenses",
+      "action": "Remediate",
+      "notes": "P7 Hardening - Prevents unauthorized software acquisition"
+    },
+    {
+      "name": "standards.AuthMethodsSettings",
+      "action": "Remediate",
+      "value": {
+        "reportSuspiciousActivity": "enabled",
+        "systemCredentialPreferences": "enabled"
+      },
+      "notes": "P3 MFA - Enable suspicious activity reporting"
+    },
+    {
+      "name": "standards.AddDKIM",
+      "action": "Remediate",
+      "notes": "P7 Hardening - Email authentication for anti-phishing"
+    },
+    {
+      "name": "standards.RotateDKIM",
+      "action": "Remediate",
+      "notes": "P7 Hardening - Ensure DKIM keys are 2048-bit"
+    },
+    {
+      "name": "standards.EnableCustomerLockbox",
+      "action": "Remediate",
+      "notes": "P1/P2 Patching - Controls Microsoft access to tenant for updates/patches"
+    },
+    {
+      "name": "standards.RestrictThirdPartyStorageServices",
+      "action": "Remediate",
+      "notes": "P7 Hardening - Prevents data exfiltration via third-party storage"
+    },
+    {
+      "name": "standards.FormsPhishingProtection",
+      "action": "Remediate",
+      "notes": "P7 Hardening - Internal phishing protection in Forms"
+    },
+    {
+      "name": "standards.DisableGuestDirectory",
+      "action": "Remediate",
+      "notes": "P3 MFA - Prevents guest enumeration of directory"
+    },
+    {
+      "name": "standards.GuestInvite",
+      "action": "Remediate",
+      "value": "adminsAndUsers",
+      "notes": "P3 MFA - Controls who can invite guests"
+    },
+    {
+      "name": "standards.laps",
+      "action": "Remediate",
+      "notes": "P7 Hardening - Local Admin Password Solution for device security"
+    },
+    {
+      "name": "standards.BitLockerKeysForOwnedDevice",
+      "action": "Report",
+      "value": true,
+      "notes": "P7 Hardening - Users can recover BitLocker keys for owned devices"
+    }
+  ],
+  "intuneTemplates": [
+    {
+      "name": "Essential Eight - ASR Rules (P6/P7)",
+      "description": "Attack Surface Reduction rules for Macro Restrictions (P6) and Application Hardening (P7)",
+      "platform": "windows10",
+      "settings": {
+        "defenderAttackSurfaceReduction": {
+          "blockOfficeApplicationsFromCreatingExecutableContent": "block",
+          "blockOfficeApplicationsFromCreatingChildProcesses": "block",
+          "blockOfficeApplicationsFromInjectingCodeIntoOtherProcesses": "block",
+          "blockJavaScriptOrVBScriptFromLaunchingDownloadedExecutableContent": "block",
+          "blockExecutableContentFromEmailClientAndWebMail": "block",
+          "blockUntrustedAndUnsignedProcessesThatRunFromUSB": "audit",
+          "useAdvancedProtectionAgainstRansomware": "block",
+          "blockCredentialStealingFromWindowsLocalSecurityAuthoritySubsystem": "block",
+          "blockProcessCreationsFromPSExecAndWMICommands": "audit",
+          "blockOfficeCommunicationApplicationFromCreatingChildProcesses": "block",
+          "blockPersistenceViaWMIEventSubscription": "audit",
+          "blockWindowsLocalSecurityAuthoritySubsystemFromHavingNonMicrosoftPluginsLoaded": "audit"
+        }
+      }
+    },
+    {
+      "name": "Essential Eight - Patch Management (P1/P2)",
+      "description": "Windows Update for Business settings to meet 48-hour critical patching SLA",
+      "platform": "windows10",
+      "settings": {
+        "updateRings": {
+          "qualityUpdatesDeferralDays": 0,
+          "featureUpdatesDeferralDays": 14,
+          "expediteUpdates": true,
+          "automaticUpdateBehavior": "autoInstallAtMaintenanceTime",
+          "activeHoursStart": "08:00",
+          "activeHoursEnd": "18:00",
+          "restartNotifications": "required",
+          "deadlineForFeatureUpdatesInDays": 14,
+          "deadlineForQualityUpdatesInDays": 7
+        }
+      }
+    },
+    {
+      "name": "Essential Eight - Device Compliance",
+      "description": "Device compliance for patch status and security requirements",
+      "platform": "windows10",
+      "settings": {
+        "compliancePolicy": {
+          "requireAntiMalware": true,
+          "requireFirewall": true,
+          "requireAutomaticUpdates": true,
+          "requireBitLocker": true,
+          "requireSecureBoot": true,
+          "requireCodeIntegrity": true,
+          "osMinimumVersion": "10.0.19041"
+        }
+      }
+    }
+  ],
+  "conditionalAccessTemplates": [
+    {
+      "name": "Essential Eight - MFA for All Users (P3R1)",
+      "description": "Require MFA for all users accessing Microsoft 365 services - ML1 requirement",
+      "state": "enabled",
+      "conditions": {
+        "users": {
+          "includeUsers": ["All"]
+        },
+        "applications": {
+          "includeApplications": ["Office365", "MicrosoftAdminPortals"]
+        }
+      },
+      "grantControls": {
+        "operator": "OR",
+        "builtInControls": ["mfa"]
+      }
+    },
+    {
+      "name": "Essential Eight - Admin Phishing-Resistant MFA (P3R10-R12 ML2)",
+      "description": "Require phishing-resistant MFA for administrative roles - ML2+ requirement",
+      "state": "enabled",
+      "conditions": {
+        "users": {
+          "includeRoles": [
+            "Global Administrator",
+            "Privileged Role Administrator",
+            "User Administrator",
+            "Security Administrator"
+          ]
+        },
+        "applications": {
+          "includeApplications": ["All"]
+        }
+      },
+      "grantControls": {
+        "operator": "OR",
+        "builtInControls": ["mfa"],
+        "authenticationStrength": {
+          "id": "00000000-0000-0000-0000-000000000004",
+          "displayName": "Phishing-resistant MFA"
+        }
+      }
+    },
+    {
+      "name": "Essential Eight - Block Legacy Auth (P7)",
+      "description": "Block legacy authentication protocols - Application Hardening",
+      "state": "enabled",
+      "conditions": {
+        "users": {
+          "includeUsers": ["All"]
+        },
+        "applications": {
+          "includeApplications": ["All"]
+        },
+        "clientAppTypes": ["other", "exchangeActiveSync"]
+      },
+      "grantControls": {
+        "operator": "OR",
+        "builtInControls": ["block"]
+      }
+    }
+  ],
+  "driftSettings": {
+    "enabled": true,
+    "notificationEmails": ["security@company.com"],
+    "webhookUrl": "",
+    "runSchedule": "daily",
+    "alertOnDrift": true
+  },
+  "metadata": {
+    "version": "1.0",
+    "createdFor": "ACSC Essential Eight Assessment System",
+    "maturityLevels": ["ML1", "ML2", "ML3"],
+    "pillars": ["P1", "P2", "P3", "P6", "P7"]
+  }
+}

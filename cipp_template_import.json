@@ -1,0 +1,184 @@
+[
+  {
+    "name": "standards.AuditLog",
+    "cat": "Global Standards",
+    "action": "Remediate",
+    "notes": "P3 MFA - Required for event logging and analysis (R13-R18 ML2, R18-R22 ML3)"
+  },
+  {
+    "name": "standards.EnableMailboxAuditing",
+    "cat": "Exchange Standards",
+    "action": "Remediate",
+    "notes": "P3 MFA - Mailbox auditing for compliance and investigation"
+  },
+  {
+    "name": "standards.EnableFIDO2",
+    "cat": "Entra (AAD) Standards",
+    "action": "Remediate",
+    "notes": "P3 MFA - Phishing-resistant MFA for ML2+ (P3R10-R12, P3R20-R23)"
+  },
+  {
+    "name": "standards.EnableHardwareOAuth",
+    "cat": "Entra (AAD) Standards",
+    "action": "Remediate",
+    "notes": "P3 MFA - Hardware tokens for phishing-resistant MFA"
+  },
+  {
+    "name": "standards.DisableSMS",
+    "cat": "Entra (AAD) Standards",
+    "action": "Remediate",
+    "notes": "P3 MFA - Remove SMS as MFA method (not phishing-resistant per ACSC)"
+  },
+  {
+    "name": "standards.DisableVoice",
+    "cat": "Entra (AAD) Standards",
+    "action": "Remediate",
+    "notes": "P3 MFA - Remove Voice call as MFA method (not phishing-resistant per ACSC)"
+  },
+  {
+    "name": "standards.NudgeMFA",
+    "cat": "Entra (AAD) Standards",
+    "action": "Remediate",
+    "value": {
+      "snoozeDurationInDays": 3
+    },
+    "notes": "P3 MFA - Encourage MFA registration for all users"
+  },
+  {
+    "name": "standards.PerUserMFA",
+    "cat": "Entra (AAD) Standards",
+    "action": "Report",
+    "notes": "P3 MFA - Track per-user MFA status as fallback"
+  },
+  {
+    "name": "standards.OauthConsent",
+    "cat": "Entra (AAD) Standards",
+    "action": "Remediate",
+    "notes": "P7 Hardening - Prevents unauthorized app consent"
+  },
+  {
+    "name": "standards.DisableGuests",
+    "cat": "Entra (AAD) Standards",
+    "action": "Report",
+    "value": {
+      "days": 90
+    },
+    "notes": "P3 MFA - Review guest access regularly for ML2+"
+  },
+  {
+    "name": "standards.StaleEntraDevices",
+    "cat": "Entra (AAD) Standards",
+    "action": "Remediate",
+    "value": {
+      "days": 45
+    },
+    "notes": "P1/P2 Patching - Remove stale devices from update compliance scope"
+  },
+  {
+    "name": "standards.DisableBasicAuthSMTP",
+    "cat": "Global Standards",
+    "action": "Remediate",
+    "notes": "P7 Hardening - Disables legacy authentication"
+  },
+  {
+    "name": "standards.PhishProtection",
+    "cat": "Global Standards",
+    "action": "Remediate",
+    "notes": "P7 Hardening - Branding protection helps identify phishing"
+  },
+  {
+    "name": "standards.ActivityBasedTimeout",
+    "cat": "Global Standards",
+    "action": "Remediate",
+    "value": {
+      "timeout": "01:00:00"
+    },
+    "notes": "P7 Hardening - Session timeout reduces attack window"
+  },
+  {
+    "name": "standards.PasswordExpireDisabled",
+    "cat": "Entra (AAD) Standards",
+    "action": "Remediate",
+    "notes": "P7 Hardening - Modern password guidance (NIST/Microsoft)"
+  },
+  {
+    "name": "standards.DisableSecurityGroupUsers",
+    "cat": "Entra (AAD) Standards",
+    "action": "Remediate",
+    "notes": "P7 Hardening - Prevents users creating security groups"
+  },
+  {
+    "name": "standards.DisableTenantCreation",
+    "cat": "Entra (AAD) Standards",
+    "action": "Remediate",
+    "notes": "P7 Hardening - Restricts shadow IT tenant creation"
+  },
+  {
+    "name": "standards.DisableSelfServiceLicenses",
+    "cat": "Entra (AAD) Standards",
+    "action": "Remediate",
+    "notes": "P7 Hardening - Prevents unauthorized software acquisition"
+  },
+  {
+    "name": "standards.AuthMethodsSettings",
+    "cat": "Entra (AAD) Standards",
+    "action": "Remediate",
+    "notes": "P3 MFA - Enable suspicious activity reporting"
+  },
+  {
+    "name": "standards.AddDKIM",
+    "cat": "Exchange Standards",
+    "action": "Remediate",
+    "notes": "P7 Hardening - Email authentication for anti-phishing"
+  },
+  {
+    "name": "standards.RotateDKIM",
+    "cat": "Exchange Standards",
+    "action": "Remediate",
+    "notes": "P7 Hardening - Ensure DKIM keys are 2048-bit"
+  },
+  {
+    "name": "standards.EnableCustomerLockbox",
+    "cat": "Global Standards",
+    "action": "Remediate",
+    "notes": "P1/P2 Patching - Controls Microsoft access for updates"
+  },
+  {
+    "name": "standards.RestrictThirdPartyStorageServices",
+    "cat": "Global Standards",
+    "action": "Remediate",
+    "notes": "P7 Hardening - Prevents data exfiltration"
+  },
+  {
+    "name": "standards.FormsPhishingProtection",
+    "cat": "Global Standards",
+    "action": "Remediate",
+    "notes": "P7 Hardening - Internal phishing protection"
+  },
+  {
+    "name": "standards.DisableGuestDirectory",
+    "cat": "Entra (AAD) Standards",
+    "action": "Remediate",
+    "notes": "P3 MFA - Prevents guest enumeration of directory"
+  },
+  {
+    "name": "standards.GuestInvite",
+    "cat": "Entra (AAD) Standards",
+    "action": "Remediate",
+    "value": "adminsOnly",
+    "notes": "P3 MFA - Controls who can invite guests"
+  },
+  {
+    "name": "standards.laps",
+    "cat": "Entra (AAD) Standards",
+    "action": "Remediate",
+    "notes": "P7 Hardening - Local Admin Password Solution"
+  },
+  {
+    "name": "standards.BitLockerKeysForOwnedDevice",
+    "cat": "Entra (AAD) Standards",
+    "action": "Remediate",
+    "value": false,
+    "notes": "P7 Hardening - BitLocker key recovery policy"
+  }
+]
